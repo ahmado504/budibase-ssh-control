@@ -1,0 +1,39 @@
+{
+  "type": "automation",
+  "metadata": {},
+  "schema": {
+    "name": "budibase-automation",
+    "tagline": "SSH Trigger",
+    "icon": "Actions",
+    "description": "SSH Trigger",
+    "type": "action",
+    "stepId": "budibase-automation",
+    "inputs": {
+      "text": ""
+    },
+    "schema": {
+      "inputs": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "title": "Log"
+          }
+        },
+        "required": ["text"]
+      },
+      "outputs": {
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Whether the action was successful"
+          },
+          "message": {
+            "type": "string",
+            "description": "What was output"
+          }
+        },
+        "required": ["success", "message"]
+      }
+    }
+  }
+}

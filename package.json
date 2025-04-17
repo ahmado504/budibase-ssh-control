@@ -1,0 +1,30 @@
+{
+  "name": "budibase-ssh-trigger",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "ts-node src/test.ts",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "ssh2": "^1.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.9.5"
+  },
+  "budibase": {
+    "plugin": {
+      "type": "automationAction",
+      "actions": [
+        {
+          "name": "Trigger SSH Script",
+          "key": "triggerSSH",
+          "schema": "schema.json"
+        }
+      ]
+    }
+  }
+}

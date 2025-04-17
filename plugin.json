@@ -1,0 +1,14 @@
+{
+  "name": "goPro-ssh-control",
+  "version": "1.0.0",
+  "description": "Start/stop & upload GoPro via SSH",
+  "main": "dist/index.js",
+  "budibase": {
+    "componentType": "automation",
+    "hooks": {
+      "startRecording":    "startRecording",
+      "stopRecording":     "stopRecording",
+      "recordAndUpload":   "recordAndUpload"
+    }
+  }
+}
