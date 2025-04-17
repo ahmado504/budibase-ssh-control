@@ -22,12 +22,8 @@ function runCommand(opts: SSHOptions, command: string): Promise<string> {
             }
             let stdout = '';
             let stderr = '';
-            stream.on('data', (data: Buffer) => {
-              stdout += data.toString();
-            });
-            stream.stderr.on('data', (data: Buffer) => {
-              stderr += data.toString();
-            });
+            stream.on('data', (data: Buffer) => { stdout += data.toString(); });
+            stream.stderr.on('data', (data: Buffer) => { stderr += data.toString(); });
             stream.on('close', (code: number) => {
               conn.end();
               if (code === 0) resolve(stdout.trim());
@@ -46,4 +42,21 @@ function runCommand(opts: SSHOptions, command: string): Promise<string> {
   });
 }
 
-// … your existing exports …
+/** Start only recording */
+export async function startRecording(opts: SSHOptions): Promise<string> {
+  return runCommand(opts, 'bash ~/start_recording.sh');
+}
+
+/** Stop only recording */
+export async function stopRecording(opts: SSHOptions): Promise<string> {
+  return runCommand(opts, 'bash ~/stop_recording.sh');
+}
+
+/** Full pipeline via Python script */
+export async function recordAndUpload(
+  opts: SSHOptions,
+  vaultId: number,
+  duration: number
+): Promise<string> {
+  return runCommand(opts, `python3 ~/gopro_script.py ${vaultId} ${duration}`);
+}
