@@ -6,7 +6,7 @@ const opts: SSHOptions = {
   password: 'yourPasswordHere',  // ← your Pi password
 };
 
-async function runTest() {
+async function runTest(): Promise<void> {
   try {
     console.log('▶️  Testing startRecording…');
     console.log(await startRecording(opts));
