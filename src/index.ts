@@ -1,4 +1,3 @@
-// src/index.ts
 export {
   startRecording,
   stopRecording,
