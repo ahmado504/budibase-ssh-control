@@ -1,22 +1,25 @@
-// src/test.ts
-import { startRecording, stopRecording, SSHOptions } from './automation';
+import { startRecording, stopRecording, recordAndUpload, SSHOptions } from './automation';
 
 const opts: SSHOptions = {
-  host: '192.168.1.146',       // ← your Pi’s IP
-  username: 'vault',
-  password: 'polevault62',
+  host: '192.168.1.42',   // ← your Pi’s IP
+  username: 'vault',      // ← your Pi username
+  password: 'yourPasswordHere',  // ← your Pi password
 };
 
 async function runTest() {
   try {
-    console.log('▶️  Starting recording…');
+    console.log('▶️  Testing startRecording…');
     console.log(await startRecording(opts));
 
-    // wait 10s to simulate a session
-    await new Promise(r => setTimeout(r, 10000));
+    await new Promise(r => setTimeout(r, 5000));
 
-    console.log('⏹  Stopping recording…');
+    console.log('⏹  Testing stopRecording…');
     console.log(await stopRecording(opts));
+
+    await new Promise(r => setTimeout(r, 5000));
+
+    console.log('🔄 Testing recordAndUpload…');
+    console.log(await recordAndUpload(opts, 1, 15));
   } catch (err) {
     console.error('❌  Test error:', err);
   }
