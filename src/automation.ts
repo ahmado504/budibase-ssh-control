@@ -1,3 +1,4 @@
+// src/automation.ts
 import { Client, ClientChannel } from 'ssh2';
 
 export interface SSHOptions {
